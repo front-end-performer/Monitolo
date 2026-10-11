@@ -6,6 +6,32 @@ Monitolo is a lightweight desktop system monitor. It shows live CPU and memory u
 
 Built with Electron + React + TypeScript, with a local Node.js/Express backend that the app starts, watches and stops itself.
 
+## Requirements
+
+- **Node.js 24+** (see `.nvmrc`; with nvm: `nvm use`). The backend runs `.ts` files directly, which needs a recent Node.
+- **pnpm 11+**. If you don't have it: `npm install -g pnpm@11`, or `corepack enable pnpm`.
+- Linux, macOS or Windows. Developed and tested on Ubuntu.
+
+## Setup
+
+```bash
+git clone git@github.com:front-end-performer/Monitolo.git
+cd Monitolo
+pnpm install
+pnpm dev        # the first run downloads the Electron binary (~100 MB)
+```
+
+**Linux: if the app crashes with `The SUID sandbox helper binary was found, but is not configured correctly`**, Ubuntu (23.10+) blocks Chromium's default sandbox. Give the sandbox helper the permissions it needs (once, and again after reinstalling `node_modules`):
+
+```bash
+sudo chown root node_modules/electron/dist/chrome-sandbox
+sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
+```
+
+Or, for a quick local try only: `pnpm dev -- --no-sandbox`.
+
+The backend uses port **4317** on `127.0.0.1`. If another program uses it, the app shows "Backend connection lost".
+
 ## Run it
 
 ```bash

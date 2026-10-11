@@ -1,5 +1,27 @@
+# Dependencies (recreated by `pnpm install`)
 node_modules
+
+# Build output (recreated by `pnpm build` / `pnpm dist`)
 out
 dist
-*.log
 *.tsbuildinfo
+
+# Secrets: never commit these. The app itself needs none (its backend token
+# is generated at runtime), but packaging/CI may (e.g. snapcraft login export).
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+creds.txt
+
+# Logs
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea
+.vscode/*
+!.vscode/extensions.json
+*.swp
