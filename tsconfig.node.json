@@ -1,0 +1,24 @@
+// Node side: Electron main, preload, the backend and the build config.
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    // NodeNext = resolve imports exactly like Node does. Relative imports need
+    // a file extension, which is what lets `node backend/server.ts` run the
+    // backend directly (Node 24 strips the types itself, no build step).
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    // Only TypeScript syntax Node can strip (no enums, no namespaces).
+    "erasableSyntaxOnly": true,
+    // `import type` must be explicit, so type-only imports vanish cleanly.
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["electron", "backend", "shared", "electron.vite.config.ts"]
+}

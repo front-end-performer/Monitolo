@@ -1,0 +1,8 @@
+// Solution-style config: no files of its own, it points your editor at the two
+// real configs. Node code and browser code need different settings (Node has
+// `process` and `fs`, the browser has `window` and the DOM), so they are kept
+// apart. Code in shared/ is checked by both.
+{
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
+}

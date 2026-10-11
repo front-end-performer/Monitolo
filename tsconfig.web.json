@@ -1,0 +1,21 @@
+// Browser side: the React renderer. No Node types here on purpose, so using
+// `fs` or `process` in UI code is a compile error, just like it is at runtime.
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    // Vite's types teach TypeScript about `import "./styles.css"` and friends.
+    "types": ["vite/client"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "shared"]
+}
